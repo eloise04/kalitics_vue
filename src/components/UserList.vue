@@ -19,6 +19,7 @@ export default {
     data() {
         return {
             users: [],
+            currentUser: null,
             showCreateForm: false,
         };
     },
@@ -35,12 +36,20 @@ export default {
             const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
             return new Date(dateString).toLocaleDateString('fr-FR', options);
         },
-        addUser(newUser) {
-            this.users.push({ ...newUser, id: this.users.length + 1 });
+        addUser(user) {
+            if (this.currentUser) {
+                const index = this.users.findIndex(u => u.id === this.currentUser.id);
+                if (index !== -1) {
+                    this.users.splice(index, 1, { ...user, id: this.currentUser.id });
+                }
+            } else {
+                this.users.push({ ...user, id: this.users.length + 1 });
+            }
             this.showCreateForm = false;
+            this.currentUser = null;
         },
         editUser(user) {
-            this.currentUser = user;
+            this.currentUser = { ...user };
             this.showCreateForm = true;
         },
         deleteUser(userId) {

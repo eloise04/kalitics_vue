@@ -1,5 +1,5 @@
 [
-    { "id": 1, "startedAt": "12/12/2012",  "endAt": "13/13/2013", "name": "John Smith" },
+    { "id": 1, "startedAt": "12/12/2012",  "endAt": "12/01/2013", "name": "John Smith" },
     { "id": 2, "startedAt": "12/01/2001",  "endAt": "12/01/2002", "name": "Jean Bernard" }
 ]
   
